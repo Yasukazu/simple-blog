@@ -33,6 +33,13 @@ Password: 12345
 
 There is no way to update the admin password through the dashboard yet.  
 To change your password, hash your password with PHP's `password_hash()` function. Then update the database value with the new password hash.   
+Following PHP script is to print a password hash. Save as `pw_hash.php` and install php like `sudo apt install php`(although installing php also installs http server `apache` and rewrites the system start-up job to run http-server background..) then run `php pw_hash.php`:
+```php
+<?php
+$hashed = password_hash('<<new-password>>', PASSWORD_DEFAULT);
+var_dump($hashed);
+?>
+```
 
 # Screenshots
 
