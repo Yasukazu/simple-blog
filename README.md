@@ -14,9 +14,9 @@ The pagination results per page can be set on the `config.php` file.
 
 ### URL Rewrite
 The latest update introduces 'slugs', also known as 'SEO URLs'.   
-After you update to the latest version, click on the "Generate slugs (SEO URLs)" button on the admin dashboard and slugs will be generated for all existing posts.   
+After you update to the latest version, click on the "Generate slugs (SEO URLs)" button on the admin dashboard, then a slug will be generated for every existing post.   
 
-The blog posts URL structure is like this: `http://localhost/p/4/apple-reveals-apple-watch-series-7`   
+The blog posts' URL structure is like this: `http://localhost/p/4/apple-reveals-apple-watch-series-7`   
 
 If you use Apache, enable the Apache rewrite module for the .htaccess rewrite rule to work.
 
@@ -28,18 +28,27 @@ location / {
 ```
 
 # Default Admin Login
-Username: admin  
+Username: Admin  
 Password: 12345   
 
-There is no way to update the admin password through the dashboard yet.  
-To change your password, hash your password with PHP's `password_hash()` function. Then update the database value with the new password hash.   
-Following PHP script is to print a password hash. Save as `pw_hash.php` and install php like `sudo apt install php`(although installing php also installs http server `apache` and rewrites the system start-up job to run http-server background..) then run `php pw_hash.php`:
+There is no way to update the admin password through the _dashboard_ yet.  
+But there is a temporary countermeasure:
+  To change your password, hash your password using PHP's `password_hash()` function. Then update the database record with the new password hash.   
+Following PHP script is to print a password hash. Save as `pw_hash.php` and install php like `sudo apt install php`(although installing `php` command also installs http server `apache` and rewrites the system start-up job to run http server in background from next reboot; probably `/var/www/html/` might become the localhost's website root directory; you check with command `telnet localhostt 80` then enter `HEAD / HTTP/1.0` and enter twice returns `HTTP/1.1 200 Ok` or command `sudo systemctl status apache2` returns `Active: active (running)`) then run `php pw_hash.php`:
 ```php
 <?php
 $hashed = password_hash('<<new-password>>', PASSWORD_DEFAULT);
 var_dump($hashed);
 ?>
 ```
+
+After you get the new password for user 'admin', you can update the database record column for 'admin' table like this:
+```SQL
+UPDATE `admin`
+SET `password` = '<<newly generated password hash>>'
+WHERE `id` = 1;
+```
+Notice: password hash length must be 255 or less as database table definition
 
 # Screenshots
 
