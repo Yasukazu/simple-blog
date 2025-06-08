@@ -89,5 +89,5 @@ if ($page != $totalpages) {
 echo "</div></p>";
 }
 
-include("categories.php");
+// include("categories.php");
 include("footer.php");
