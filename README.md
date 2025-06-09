@@ -13,6 +13,59 @@ $dbname        = "simpleblog";
 $charset       = "utf8mb4";
 ```
 
+Execute the content of `database.sql` file in MySQL/MariaDB. Then execute 'insert-to-admin-table' SQL:
+```SQL
+INSERT INTO `admin` (`id`, `username`, `password`, `email`, `date`) VALUES
+(1, 'Admin', '<<admin-password-hash>>', '<<user-email>>', '<<yyyy-mm-dd hh:mm:ss>>');
+```
+
+If installed on a sub-folder, edit the `config.php` and replace the empty constant with the folder's name.  
+
+The pagination results per page can be set on the `config.php` file.  
+```PHP
+define('SITE_ROOT', 'blog'); // If installed on a sub-folder, replace the empty constant with the folder's name
+```
+
+### URL Rewrite
+The latest update introduces 'slugs', also known as 'SEO URLs'.   
+After you update to the latest version, click on the "Generate slugs (SEO URLs)" button on the admin dashboard then a slug will be generated for every existing post.   
+
+The blog posts' URL structure is like this: `http://localhost/p/4/apple-reveals-apple-watch-series-7`   
+
+If you use Apache, enable the Apache rewrite module for the .htaccess rewrite rule to work.
+
+If you use NGINX, you can insert something similar to the code below in your NGINX configuration block.      
+```
+location / {
+    rewrite ^p/(.*) view.php?id=$1;
+}
+```
+
+# Default Admin Login
+Username: admin  
+Password: 12345   
+
+There is no way to update the admin password through the _dashboard_ yet.  
+But there is a temporary countermeasure:
+  To change your password, hash your password using PHP's `password_hash()` function. Then update the database record with the new password hash.   
+Following PHP script is to print a password hash. Save as `pw_hash.php` and install php like `sudo apt install php`(although installing `php` command also installs http server `apache` and rewrites the system start-up job to run http server in background from next reboot; probably `/var/www/html/` might become the localhost's website root directory) then run `php pw_hash.php`:
+```php
+<?php
+$hashed = password_hash('<<# Simple-PHP-Blog
+Simple blog system for personal development using procedural PHP and MYSQL.
+
+For educational purposes only.
+
+# Setup
+
+Insert variables of `connect.php` file just before `$dbcon`-starting line with your database credentials like:
+```PHP
+$dbuser        = "your_name";
+$dbpass        = "your_password";
+$dbname        = "simpleblog";
+$charset       = "utf8mb4";
+```
+
 ```
 
 Execute the content of `database.sql` file in MySQL/MariaDB. Then execute 'insert-to-admin-table' SQL:
