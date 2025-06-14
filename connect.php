@@ -1,17 +1,19 @@
 <?php
+require_once 'db_config.php';
+
 ob_start();
 session_start();
 
-$dbhost 	= "localhost";
-$dbuser 	= "root";
-$dbpass 	= "";
-$dbname 	= "newblog";
-$charset 	= "utf8";
+$db_host  = DB_HOST ;
+$db_user  = DB_USER ;
+$db_pass  = DB_PASS ;
+$db_name  = DB_NAME ;
+$charset 	= CHARSET;
 
-$dbcon = mysqli_connect($dbhost, $dbuser, $dbpass);
+$db_con = mysqli_connect($db_host, $db_user, $db_pass);
 
-if (!$dbcon) {
-    die("Connection failed" . mysqli_connect_error());
+if (!$db_con) {
+    die("MySQLi connect error: " . mysqli_connect_error());
 }
-mysqli_select_db($dbcon,$dbname);
-mysqli_set_charset($dbcon,$charset);
+mysqli_select_db($db_con, $db_name);
+mysqli_set_charset($db_con, $charset);

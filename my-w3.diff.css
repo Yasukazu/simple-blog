@@ -1,0 +1,13 @@
+/* 28c28 */
+h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:11px}
+/* 38,40c38,40 */
+.w3-table th:first-child,.w3-table td:first-child,.w3-table-all th:first-child,.w3-table-all td:first-child{padding-left:11px}
+.w3-btn,.w3-button{border:none;display:inline-block;padding:8px 11px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-btn:hover{box-shadow:0 8px 11px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+/* 45c45 */
+.w3-ul{list-style-type:none;padding:0;margin:0}.w3-ul li{padding:8px 11px;border-bottom:1px solid #ddd}.w3-ul li:last-child{border-bottom:none}
+/* 64c64 */
+.w3-bar .w3-bar-item{padding:2px 4px;float:left;width:auto;border:none;display:block;outline:0}
+/* 110,111c110,111 */
+.w3-container,.w3-panel{padding:0.0em 0px}.w3-panel{margin-top:2px;margin-bottom:2px}
+.w3-grid{display:grid}.w3-grid-padding{display:grid;gap:2px}.w3-flex{display:flex}

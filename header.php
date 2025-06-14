@@ -14,10 +14,10 @@ if (!empty(SITE_ROOT)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" ,initial-scale=1">
-    <title>PHP Blog</title>
+    <title>My Simple Blog</title>
 
-    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" type="text/css" href="css/my-w3.diff.css">
 
     <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
